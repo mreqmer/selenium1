@@ -335,27 +335,42 @@ class PruebasSelenium {
         boolean textoDir= errorDir.isDisplayed();
         assertTrue(textoDir); 
 	}
+
+	@Test
+	void test15() {
+		driver1.get("https://elenarivero.github.io/Ejercicio2/index.html");
+		WebElement numBox = driver1.findElement(By.id("numero"));        
+        WebElement dirBox = driver1.findElement(By.id("directivo"));
+        
+        numBox.sendKeys("123");
+        dirBox.sendKeys("+");
+        
+        
+        WebElement submitButton = driver1.findElement(By.xpath("//p/input[@type=\"submit\"]"));
+        submitButton.click();
+        
+        WebElement correcto = driver1.findElement(By.cssSelector("h3")); 
+        assertEquals("EMPLEADO AÑADIDO CORRECTAMENTE", correcto.getText());
+	}
 	
-	//falta saber como hacer los casos válidos
+	@Test
+	void test16() {
+		driver1.get("https://elenarivero.github.io/Ejercicio2/index.html");
+		WebElement numBox = driver1.findElement(By.id("numero"));        
+        WebElement dirBox = driver1.findElement(By.id("directivo"));
+        
+        numBox.sendKeys("123");
+        dirBox.sendKeys("-");
+        
+        
+        WebElement submitButton = driver1.findElement(By.xpath("//p/input[@type=\"submit\"]"));
+        submitButton.click();
+        
+        WebElement correcto = driver1.findElement(By.cssSelector("h3")); 
+        assertEquals("EMPLEADO AÑADIDO CORRECTAMENTE", correcto.getText());
+	}
 	
-//	@Test
-//	void test15() {
-//		driver1.get("https://elenarivero.github.io/Ejercicio2/index.html");
-//		WebElement numBox = driver1.findElement(By.id("numero"));        
-//        WebElement dirBox = driver1.findElement(By.id("directivo"));
-//        
-//        numBox.sendKeys("123");
-//        dirBox.sendKeys("+");
-//        
-//        
-//        WebElement submitButton = driver1.findElement(By.xpath("//p/input[@type=\"submit\"]"));
-//        submitButton.click();
-//        
-//        String expectedUrl = "https://elenarivero.github.io/Ejercicio2/datos_correctos.html";
-//        String actualUrl = driver1.getCurrentUrl();
-//        assertEquals("https://elenarivero.github.io/Ejercicio2/datos_correctos.html", actualUrl);
-//        
-//	}
+	
 	/*
 	@AfterAll
 	static void exitDriver() {
